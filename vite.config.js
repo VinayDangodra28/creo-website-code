@@ -6,11 +6,15 @@ export default defineConfig(({ command }) => {
   const isBuild = command === 'build';
 
   return {
-    base: isBuild ? '/react/build/' : '/', // Use '/react/build/' for production, '/' for dev
+    // Base path for production and dev
+    base: isBuild ? '/react/build/' : '/',
+
     build: {
-      outDir: isBuild ? 'F:/rohit-react/creo-elements/react/build' : 'dist', // Change the output directory only for production
+      // Output folder inside project root
+      outDir: 'react/build', // build goes inside react/build
+      emptyOutDir: true, // clears react/build before each build
     },
-    plugins: [react()], // Add the React plugin here
-    
+
+    plugins: [react()],
   };
 });
